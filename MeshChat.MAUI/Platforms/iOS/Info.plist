@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSBluetoothAlwaysAndWhenInUseUsageDescription</key>
+	<string>MeshChat needs Bluetooth to communicate with nearby peers on the mesh network.</string>
+
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>MeshChat needs Bluetooth to advertise its presence on the mesh network.</string>
+
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>MeshChat uses local network discovery to find mesh network peers.</string>
+
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_meshchat._tcp</string>
+		<string>_meshchat._udp</string>
+	</array>
+
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+		<string>fetch</string>
+		<string>processing</string>
+	</array>
+
+	<key>NSWifiUsageDescription</key>
+	<string>MeshChat uses Wi-Fi to communicate with mesh network peers.</string>
+
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>MeshChat needs location to discover peers on the local network.</string>
+
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+
+	<key>UISupportedInterfaceOrientationsIpad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<key>MinimumOSVersion</key>
+	<string>14.2</string>
+</dict>
+</plist>

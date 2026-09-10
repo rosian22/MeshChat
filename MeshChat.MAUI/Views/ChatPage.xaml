@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MeshChat.Core.Models;assembly=MeshChat.Core"
+    x:Class="MeshChat.MAUI.Views.ChatPage"
+    Title="Chat"
+    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1C1C1E}">
+
+    <Grid RowDefinitions="*,Auto" Padding="0">
+        <!-- Messages CollectionView -->
+        <CollectionView
+            x:Name="MessagesCollectionView"
+            ItemsSource="{Binding Messages}"
+            SelectionMode="None"
+            Margin="0"
+            Padding="16,16,16,8">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Message">
+                    <StackLayout Margin="0,4" Padding="0">
+                        <Frame
+                            CornerRadius="16"
+                            HasShadow="False"
+                            BackgroundColor="{AppThemeBinding Light=#007AFF, Dark=#0A84FF}"
+                            Padding="12,8"
+                            Margin="40,0,8,0">
+                            <StackLayout Spacing="2">
+                                <Label
+                                    Text="{Binding Content}"
+                                    FontSize="16"
+                                    TextColor="#FFFFFF"
+                                    LineBreakMode="WordWrap" />
+                                <Label
+                                    Text="{Binding SentAt, StringFormat='{0:HH:mm}'}"
+                                    FontSize="12"
+                                    TextColor="#FFFFFF"
+                                    Opacity="0.7"
+                                    HorizontalTextAlignment="End" />
+                                <Label
+                                    Text="{Binding Status}"
+                                    FontSize="10"
+                                    TextColor="#FFFFFF"
+                                    Opacity="0.5"
+                                    HorizontalTextAlignment="End" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Message Input Area -->
+        <Grid
+            Grid.Row="1"
+            Padding="8"
+            ColumnDefinitions="*,Auto"
+            BackgroundColor="{AppThemeBinding Light=#F2F2F7, Dark=#2C2C2E}">
+            <Entry
+                x:Name="MessageEntry"
+                Grid.Column="0"
+                Placeholder="Type a message..."
+                Text="{Binding MessageText}"
+                VerticalOptions="Center"
+                Margin="8,0"
+                ReturnCommand="{Binding SendMessageCommand}" />
+
+            <Button
+                Grid.Column="1"
+                Text="Send"
+                Command="{Binding SendMessageCommand}"
+                Margin="8,0"
+                Padding="16,8"
+                BackgroundColor="{AppThemeBinding Light=#007AFF, Dark=#0A84FF}"
+                TextColor="White"
+                CornerRadius="8" />
+        </Grid>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            Color="{AppThemeBinding Light=#007AFF, Dark=#0A84FF}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+    </Grid>
+
+</ContentPage>

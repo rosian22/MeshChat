@@ -1,0 +1,24 @@
+# Build output
+bin/
+obj/
+*.user
+*.suo
+
+# Logs & local artifacts
+*.log
+logs/
+ziMyVtFg
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.vs/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+*.skill

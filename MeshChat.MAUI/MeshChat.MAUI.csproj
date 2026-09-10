@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.Maui.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-ios;net8.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">$(TargetFrameworks);net8.0-maccatalyst</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+
+		<!-- Display name -->
+		<ApplicationTitle>MeshChat</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.meshchat.app</ApplicationId>
+		<ApplicationIdGuid>12345678-1234-1234-1234-123456789012</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+
+		<UseVariantForVersionDefaults>true</UseVariantForVersionDefaults>
+		<DefaultLanguage>en</DefaultLanguage>
+
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- .NET MAUI -->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Hosting" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+
+		<!-- MVVM Toolkit -->
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+
+		<!-- Database -->
+		<PackageReference Include="sqlite-net-pcl" Version="3.14.0" />
+
+		<!-- Project References -->
+		<ProjectReference Include="..\MeshChat.Core\MeshChat.Core.csproj" />
+		<ProjectReference Include="..\MeshChat.BLE\MeshChat.BLE.csproj" />
+		<ProjectReference Include="..\MeshChat.Network\MeshChat.Network.csproj" />
+	</ItemGroup>
+
+	<!-- .NET MAUI Resources -->
+	<ItemGroup>
+		<MauiXaml Update="App.xaml" />
+		<MauiXaml Update="AppShell.xaml" />
+		<MauiXaml Update="Views\ChatPage.xaml" />
+		<MauiXaml Update="Views\PeersPage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Resources\Fonts\" />
+		<Folder Include="Resources\Images\" />
+		<Folder Include="Resources\Raw\" />
+		<Folder Include="Resources\Styles\" />
+	</ItemGroup>
+</Project>

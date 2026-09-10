@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<Application
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MeshChat.MAUI.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PageBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="PrimaryColor">#007AFF</Color>
+            <Color x:Key="SecondaryColor">#5856D6</Color>
+            <Color x:Key="TextColor">#000000</Color>
+            <Color x:Key="SubTextColor">#666666</Color>
+            <Color x:Key="OutgoingBubbleColor">#007AFF</Color>
+            <Color x:Key="IncomingBubbleColor">#E5E5EA</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextColor}, Dark=#FFFFFF}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextColor}, Dark=#FFFFFF}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource SubTextColor}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#F2F2F7, Dark=#2C2C2E}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="Padding" Value="16,8" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>
